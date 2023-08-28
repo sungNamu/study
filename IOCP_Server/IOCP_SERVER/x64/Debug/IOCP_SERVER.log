@@ -1,18 +1,7 @@
-﻿  DataInfo.cpp
-C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\Packet.h(8,7): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
-C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\Packet.h(9,7): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
-C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\DataInfo.h(25,8): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
-C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\DataInfo.cpp(169,7): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
-  ServerManager.cpp
+﻿  ServerManager.cpp
 C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\Packet.h(8,7): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
 C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\Packet.h(9,7): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
 C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\PacketManagerInServer.h(21,91): warning C4042: 'packetId': 스토리지 클래스가 잘못되었습니다.
 C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\DataInfo.h(25,8): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
-C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\ServerManager.cpp(167,16): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
-  main.cpp
-C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\Packet.h(8,7): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
-C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\Packet.h(9,7): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
-C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\PacketManagerInServer.h(21,91): warning C4042: 'packetId': 스토리지 클래스가 잘못되었습니다.
-C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\DataInfo.h(25,8): warning C4114: 동일한 형식 한정자를 두 번 이상 사용했습니다.
-  코드를 생성하고 있습니다...
+C:\Users\sung9\Desktop\IOCP_SERVER\IOCP_SERVER\ServerManager.cpp(175,16): warning C4018: '<': signed 또는 unsigned가 일치하지 않습니다.
   IOCP_SERVER.vcxproj -> C:\Users\sung9\Desktop\IOCP_SERVER\x64\Debug\IOCP_SERVER.exe

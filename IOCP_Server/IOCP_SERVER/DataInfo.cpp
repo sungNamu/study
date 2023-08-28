@@ -39,6 +39,7 @@ const bool DataInfo::readyAccept(SOCKET listenSocket, const unsigned __int64 cur
 	_accepOverlappedEx._wsaBuf.buf = nullptr;
 	_accepOverlappedEx._state = eIOState::ACCEPT;
 	_accepOverlappedEx._sessionIndex = _Index;
+	// 미리 소켓을 만들어서 등록. connect 연결 시도가 들어오면 _socket에 바인드
 	if (AcceptEx(listenSocket, _socket, _acceptBuf, 0, sizeof(SOCKADDR_IN) + 16, sizeof(SOCKADDR_IN) + 16, &bytes, (LPWSAOVERLAPPED) & (_accepOverlappedEx)) == false)
 	{
 		if (WSAGetLastError() != WSA_IO_PENDING)

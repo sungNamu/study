@@ -26,6 +26,12 @@ const bool ServerManager::init()
 	if (_listenSocket == INVALID_SOCKET)
 		return false;
 
+	// 네이글 
+	int optval = TRUE;
+	rv = setsockopt(_listenSocket, IPPROTO_TCP, TCP_NODELAY, (char*)&optval, sizeof(optval));
+	if (rv == SOCKET_ERROR)
+		return false;
+
 	SOCKADDR_IN	serverAddr;
 	serverAddr.sin_family = AF_INET;
 	serverAddr.sin_port = htons(SERVER_PORT);
@@ -39,10 +45,12 @@ const bool ServerManager::init()
 	if (rv != 0)
 		return false;
 
+	//CompletionPort 생성
 	_completionPortHandle = CreateIoCompletionPort(INVALID_HANDLE_VALUE, NULL, NULL, IO_THREAD_MAXCOUNT);
 	if (_completionPortHandle == nullptr)
 		return false;
 
+	//CompletionPort에 listen 소켓 등록
 	auto handle = CreateIoCompletionPort((HANDLE)_listenSocket, _completionPortHandle, (UINT32)0, 0);
 	if (handle == nullptr)
 		return false;
@@ -60,7 +68,7 @@ const bool ServerManager::init()
 		auto dataInfo = new DataInfo(i, _completionPortHandle);
 		_dataInfoList.push_back(dataInfo);
 	}
-
+	_isThreadStart = true;
 	return true;
 }
 
@@ -104,6 +112,7 @@ void ServerManager::wokerThread()
 
 	while (_isThreadStart == true)
 	{
+		// 입출력완료된것이 있는지 확인
 		rv = GetQueuedCompletionStatus(_completionPortHandle, &dataSize, (PULONG_PTR)&dataInfo, &lpOverlapped, INFINITE);
 
 		if (rv == true && dataSize == 0 && lpOverlapped == nullptr)
@@ -122,11 +131,12 @@ void ServerManager::wokerThread()
 
 		switch (pOverlappedInfo->_state)
 		{
-		case eIOState::ACCEPT:
+		case eIOState::ACCEPT: // connect
 		{
 			dataInfo = getClientInfo(pOverlappedInfo->_sessionIndex);
 			if (dataInfo->completeAccept() == true)
 			{
+				// 연결완료됐다고 알림
 				completeConnect(dataInfo->getIndex());
 			}
 			else
